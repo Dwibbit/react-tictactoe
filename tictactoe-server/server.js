@@ -2,9 +2,19 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const PORT = 4000;
+// const PORT = 4000;
+app.set('port', process.env.PORT || 4000);
 
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true});
+if (process.env.NODE_ENV === "production") {
+    console.log('Attempting to create connection to production database');
+    app.set('connection', mysql.createConnection({
+      host: process.env.RDS_HOSTNAME,
+      user: process.env.RDS_USERNAME,
+      password: process.env.RDS_PASSWORD,
+      port: process.env.RDS_PORT}));  
+} 
+
+mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true});
 const db = mongoose.connection;
 db.on('error', (err) => {
     console.error(err);
@@ -16,6 +26,10 @@ app.use(express.json());
 const gameDataRouter = require('./routes/gameData');
 app.use('/gameData', gameDataRouter);
 
-app.listen(PORT, () => {
-    console.log("server started on port " + PORT);
+app.get('/', (req,res) => {
+    res.send('hello world');
+})
+
+app.listen(process.env.PORT || 4000, () => {
+    console.log("server started on port " + process.env.PORT || 4000);
 })
