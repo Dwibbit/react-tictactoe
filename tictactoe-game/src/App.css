@@ -1,0 +1,167 @@
+.App {
+  text-align: center;
+  font-family:'Courier New', Courier, monospace;
+}
+
+.App-header {
+  background-color: #2e362b;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
+  color: #d2c772;
+}
+
+.App-home {
+  background-color: #2e362b;
+  padding-top: 20vh;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: x-large;
+  color: #d2c772;
+}
+
+.table {
+  position: relative;
+  width: 70%;
+  padding-bottom: 3%;
+}
+
+th {
+  padding: 8px;
+  border: 2px solid #a8d28e;
+}
+
+td {
+  font-size: large;
+  padding: 10px;
+  border: 1px solid #a8d28e;
+}
+
+.App-link {
+  color: #a8d28e;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.App-link:hover {
+  color: #ebfde0;
+}
+
+.app-links {
+  display: flex;
+  margin: 3%;
+  margin-top: 6%;
+  justify-content: space-between;
+  width: 35%;
+}
+
+.disabled-link {
+  pointer-events: none;
+}
+
+.unaccessible-link {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: not-allowed;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  font-size: small;
+  width: 200%;
+  color: #ffd2d2;
+  border-radius: 4px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.name-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.theme {
+  color: #d2c772;
+  background-color: #2e362b;
+  /* accent-color: #617952; */
+  accent-color: #a8d28e;
+}
+
+.name-input-field {
+  padding: 8px;
+  font-size: 15px;
+  border: 1px solid;
+  border-radius: 10%;
+  color: #2e362b;
+  background-color: rgb(255, 255, 230);
+}
+
+.tictactoe-grid {  
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 30%;
+  min-height: 350px;
+  margin: 0 auto;
+}
+
+.hidden {
+  color: transparent;
+}
+
+.hidden:hover {
+  color: rgba(210, 199, 114, 0.5);
+}
+
+.done {
+  pointer-events: none;
+  cursor: default;
+}
+
+.tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 100px;
+  font-weight: bold;
+  border: 2px solid #a8d28e;
+  cursor: pointer;
+}
+
+.tile:nth-child(-n+3) {
+  border-top: none;
+}
+
+.tile:nth-last-child(-n+3) {
+  border-bottom: none;
+}
+
+.tile:nth-child(3n) {
+  border-right: none;
+}
+
+.tile:nth-child(n) {
+  border-left: none;
+}
