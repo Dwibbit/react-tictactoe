@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import TTTile from "./TTTTile";
 
 export default function TTTGrid({ currSymbol, swapPlayer, reset, afterReset }) {
@@ -34,8 +34,6 @@ export default function TTTGrid({ currSymbol, swapPlayer, reset, afterReset }) {
 
     const evaluate = (updated) => {
         let winner = 0;
-        if(!updated.find(s => s === '-'))
-            return 0;
         resultChecker.forEach(line => {
             if(updated[line[0]] == 'O' && updated[line[1]] == 'O' && updated[line[2]] == 'O') {
                 winner = 1;
@@ -48,6 +46,8 @@ export default function TTTGrid({ currSymbol, swapPlayer, reset, afterReset }) {
         });
         if(winner>0)
             return winner;
+        if(!updated.find(s => s === '-'))
+            return 0;
     }
 
     const resetGrid = () => {

@@ -24,9 +24,8 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    if(savedData.length>0) {
+    if(savedData.length > 0) {
       setIsFetched(true);
-      console.log(savedData);
     }
   }, [savedData])
 
@@ -57,7 +56,7 @@ export default function Home() {
             </thead>
             <tbody>
               { savedData.map(rowData => (
-                <tr>
+                <tr key={rowData._id}>
                   <td>{rowData.playerOneName}</td>
                   <td>{rowData.playerOneWins}</td>
                   <td>{rowData.playerOneLosses}</td>
